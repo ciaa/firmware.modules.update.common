@@ -148,7 +148,7 @@ int32_t UPDT_protocolSend(
    ssize_t ret;
    size_t bytes_sent = 0;
 
-   assert(NULL != buffer);
+   ciaaPOSIX_assert(NULL != buffer);
 
    if(0 == size)
    {
