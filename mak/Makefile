@@ -32,12 +32,12 @@
 #
 ###############################################################################
 # library
-LIBS 				+= update
+LIBS 				+= update_common
 # library path
-update_PATH 		= $(ROOT_DIR)$(DS)modules$(DS)update
+update_common_PATH 		= $(ROOT_DIR)$(DS)modules$(DS)update$(DS)common
 # library source path
-update_SRC_PATH 	= $(update_PATH)$(DS)src
+update_common_SRC_PATH 		= $(update_common_PATH)$(DS)src
 # library include path
-update_INC_PATH 	= $(update_PATH)$(DS)inc
+update_common_INC_PATH 		= $(update_common_PATH)$(DS)inc
 # library source files
-update_SRC_FILES 	= $(wildcard $(update_SRC_PATH)$(DS)*.c)
+update_common_SRC_FILES 	= $(wildcard $(update_common_SRC_PATH)$(DS)*.c)
