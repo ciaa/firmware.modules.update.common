@@ -64,7 +64,7 @@
 #include "ciaaPOSIX_assert.h"
 #include "UPDT_protocol.h"
 #include "UPDT_ITransport.h"
-#include "UPDT_utils.h"
+#include "ciaaLibs_Endianess.h"
 
 /*==================[macros and definitions]=================================*/
 
