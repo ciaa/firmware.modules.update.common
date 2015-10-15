@@ -110,7 +110,7 @@ int32_t UPDT_serialInit(UPDT_serialType *serial, const char *dev)
 {
    ciaaPOSIX_assert(NULL != serial && NULL != dev);
 
-   serial->fd = ciaaPOSIX_open(dev, ciaaPOSIX_O_RDWR);
+   serial->fd = ciaaPOSIX_open(dev, O_RDWR);
    ciaaPOSIX_assert(serial->fd >= 0);
 
    serial->recv = UPDT_serialRecv;
