@@ -1,6 +1,8 @@
 ###############################################################################
 #
-# Copyright 2014, Mariano Cerdeiro
+# Copyright 2014, ACSE & CADIEEL
+#    ACSE   : http://www.sase.com.ar/asociacion-civil-sistemas-embebidos/ciaa/
+#    CADIEEL: http://www.cadieel.org.ar
 #
 # This file is part of CIAA Firmware.
 #
@@ -31,13 +33,24 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 ###############################################################################
-# library
-LIBS 				+= update_common
-# library path
-update_common_PATH 		= $(ROOT_DIR)$(DS)modules$(DS)updateCommon
-# library source path
-update_common_SRC_PATH 		= $(update_common_PATH)$(DS)src
-# library include path
-update_common_INC_PATH 		= $(update_common_PATH)$(DS)inc
+# Project Name: based on Project Path and used to define OSEK configuration file
+PROJECT_NAME               = $(lastword $(subst $(DS), , $(PROJECT_PATH)))
+# Project path
+# Defined $(PROJECT_PATH) in makefile.mine
+# source path
+$(PROJECT_NAME)_SRC_PATH  += $(PROJECT_PATH)$(DS)src
+# include path
+INC_FILES            += $(PROJECT_PATH)$(DS)inc
 # library source files
-update_common_SRC_FILES 	= $(wildcard $(update_common_SRC_PATH)$(DS)*.c)
+SRC_FILES            += $(wildcard $($(PROJECT_NAME)_SRC_PATH)$(DS)*.c)
+# configuration for OSEK-OS
+OIL_FILES            += $(PROJECT_PATH)$(DS)etc$(DS)$(PROJECT_NAME).oil
+# Modules needed for this example
+MODS ?= modules$(DS)posix           \
+        modules$(DS)ciaak           \
+        modules$(DS)drivers         \
+        modules$(DS)libs            \
+        modules$(DS)rtos            \
+        modules$(DS)updateSlave		\
+	modules$(DS)updateCommon
+
